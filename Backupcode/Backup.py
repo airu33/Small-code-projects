@@ -4,15 +4,15 @@ import shutil
 from shutil import copy2 
 
 time = 3 # input time in seconds
-
+src =  # The folder you whant to copy
+dst =  # The folder you whant to paste to
 
 def main(time):
 
-    src =  # The folder you whant to copy
-    dst =  # The folder you whant to paste to
+    
 
     while timer: # The countdown. it takes t integer in seconds.
-        mins, secs = divmod(t, 60)
+        mins, secs = divmod(time, 60)
         timer = '{:02d}:{:02d}'.format(mins, secs)
         print(timer, end="\r")
         time.sleep(1)
