@@ -1,44 +1,45 @@
 import os
-import time
+from time import sleep
 import shutil
 from shutil import copy2 
 
-time = 3 # input time in seconds
+loopTime = 3 # input time in seconds
 src =  # The folder you whant to copy
 dst =  # The folder you whant to paste to
 
-def main(time):
 
-    
+# Prints time that is left until folder is copied
+def PrintTime(t):
+    mins, secs = divmod(t, 60)
+    curentTime = f"{mins:02d}:{secs:02d}"
+    print(curentTime, end="\r")
 
-    while timer: # The countdown. it takes t integer in seconds.
-        mins, secs = divmod(time, 60)
-        timer = '{:02d}:{:02d}'.format(mins, secs)
-        print(timer, end="\r")
-        time.sleep(1)
-        time -= 1 
+# Checks if folder alredy exists, if it exists delete it
+def DeleteOldFolder():
+    if os.path.exists(dst): 
+        shutil.rmtree(dst)
+        print("Existing folder removed")
+    else:
+        print("No existing folder found")
 
-        if time == 0:   # When the timer ends
+def main(t):
+    while True:
+        PrintTime(t)
 
-            if os.path.exists(dst): # Checks if the folder alredy exists, if it exists delete it 
-                shutil.rmtree(dst)
-                print("Existing folder removed")
-            else:
-                print("No existing folder found")
-
-            if os.path.exists(dst) == False:  # copies the src folder and paste it in dst folder
-                shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)   
-                print("New file pasted")
-                print("copied " + src + " pasted at " + dst)
-                time = 3 # If you whant it to loop
-            else:
-                print("Folder does not exist")
+        sleep(1)
+        t -= 1
+        
+        if t == 0:  # When the time ends
+            DeleteOldFolder()
+            shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)   
+            print("copied " + src + " pasted at " + dst)
+            t = loopTime # Reset loop
             
 
 # call function
 if __name__ == '__main__':
     try:
-        main(int(time))   
+        main(int(loopTime))   
     except KeyboardInterrupt(): # CTRL + C
         exit()
     
