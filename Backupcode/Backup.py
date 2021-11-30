@@ -1,23 +1,22 @@
 import os
-from time import sleep
 import shutil
-from shutil import copy2 
+from time import sleep
 
 loopTime = 3 # input time in seconds
-src =  # The folder you whant to copy
-dst =  # The folder you whant to paste to
+src = r"C:\Users\gustav\Desktop\Test_1" # The folder you whant to copy 
+dst = r"C:\Users\gustav\Desktop\Test_2\Test_1" # The folder you whant to paste to
 
 
 # Prints time that is left until folder is copied
 def PrintTime(t):
     mins, secs = divmod(t, 60)
     curentTime = f"{mins:02d}:{secs:02d}"
-    print(curentTime, end="\r")
+    print(curentTime, end="\r") # Prints out the time left in one row. end=\r does not spam the terminal window
 
 # Checks if folder alredy exists, if it exists delete it
 def DeleteOldFolder():
     if os.path.exists(dst): 
-        shutil.rmtree(dst)
+        shutil.rmtree(dst) #Removs dst folder
         print("Existing folder removed")
     else:
         print("No existing folder found")
@@ -28,11 +27,11 @@ def main(t):
 
         sleep(1)
         t -= 1
-        
-        if t == 0:  # When the time ends
+        # When the time ends check if dst folder exist and copies the src folder
+        if t == 0:  
             DeleteOldFolder()
-            shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)   
-            print("copied " + src + " pasted at " + dst)
+            shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=shutil.copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)   
+            print("copied " + src + " pasted in " + dst)
             t = loopTime # Reset loop
             
 
