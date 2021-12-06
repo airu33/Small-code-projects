@@ -1,9 +1,9 @@
 import os
-from time import sleep
 import shutil
-from shutil import copy2 
+from time import sleep
+from threading import Thread 
 
-loopTime = 3 # input time in seconds
+loopTime = 30 # input time in seconds
 src =  # The folder you whant to copy
 dst =  # The folder you whant to paste to
 
@@ -23,6 +23,10 @@ def DeleteOldFolder():
         print("No existing folder found")
 
 def main(t):
+    print(f'Starting the task {id}...')
+    sleep(1)
+    print('done')
+
     while True:
         PrintTime(t)
 
@@ -31,7 +35,7 @@ def main(t):
         
         if t == 0:  # When the time ends
             DeleteOldFolder()
-            shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)   
+            shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=shutil.copy2, ignore_dangling_symlinks=False, dirs_exist_ok=False)
             print("copied " + src + " pasted at " + dst)
             t = loopTime # Reset loop
             
