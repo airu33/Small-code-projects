@@ -23,7 +23,6 @@ def DeleteOldFolder():
         print("No existing folder found")
 
 def main(t):
-    print(f'Starting the task {id}...')
     sleep(1)
     print('done')
 
