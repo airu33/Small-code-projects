@@ -5,10 +5,10 @@ from time import sleep
 print("Press Ctrl + C to stop the program")
 
 print("loopTime is the amount of seconds between copies")
-loopTime = input("Numbers only: ") # input time in seconds
+loopTime = int(input("Numbers only: ")) # input time in seconds
 
-if loopTime.isnumeric() != True:
-    print("only numbers are allowed in this field")
+if loopTime != int():
+     print("only numbers are allowed in this field")
 
 print("src is the sorce file you whant to copie example C:/Users/Name/Desktop/Folder")
 src = input(": ") # The folder you whant to copy
