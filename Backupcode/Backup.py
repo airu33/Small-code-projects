@@ -2,9 +2,19 @@ import os
 import shutil
 from time import sleep
 
-loopTime = 30 # input time in seconds
-src =  # The folder you whant to copy
-dst =  # The folder you whant to paste to
+print("Press Ctrl + C to stop the program")
+
+print("loopTime is the amount of seconds between copies")
+loopTime = input("Numbers only: ") # input time in seconds
+
+if loopTime.isnumeric() != True:
+    print("only numbers are allowed in this field")
+
+print("src is the sorce file you whant to copie example C:/Users/Name/Desktop/Folder")
+src = input(": ") # The folder you whant to copy
+
+print("dst is the destination folder you whant to copie to example C:/Users/Name/Desktop/Folder")
+dst = input(": ") # The folder you whant to paste to
 
 
 # Prints time that is left until folder is copied
@@ -23,7 +33,7 @@ def DeleteOldFolder():
 
 def main(t):
     sleep(1)
-    print('done')
+    
 
     while True:
         PrintTime(t)
