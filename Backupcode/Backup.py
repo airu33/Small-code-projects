@@ -7,9 +7,6 @@ print("Press Ctrl + C to stop the program")
 print("loopTime is the amount of seconds between copies")
 loopTime = int(input("Numbers only: ")) # input time in seconds
 
-if loopTime != int():
-     print("only numbers are allowed in this field")
-
 print("src is the sorce file you whant to copie example C:/Users/Name/Desktop/Folder")
 src = input(": ") # The folder you whant to copy
 
