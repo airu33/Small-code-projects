@@ -1,7 +1,6 @@
 import os
 import shutil
 from time import sleep
-from threading import Thread 
 
 loopTime = 30 # input time in seconds
 src =  # The folder you whant to copy
